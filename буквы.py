@@ -1,18 +1,22 @@
-from math import factorial
 from collections import Counter
 
+def count_permutations(word, k):
+    letter_counts = Counter(word)
+    
+    def backtrack(counts, remaining):
+        if remaining == 0:
+            return 1
+        total = 0
+        for char in counts:
+            if counts[char] > 0:
+                counts[char] -= 1
+                total += backtrack(counts, remaining - 1)
+                counts[char] += 1
+        return total
+    
+    return backtrack(letter_counts, k)
+
 word = "АБРАКАДАБРА"
-
-letter_counts = Counter(word)
-total_letters = len(word)
-word_length = 5
-
-numerator = factorial(total_letters) // factorial(total_letters - word_length)
-
-denominator = 1
-for count in letter_counts.values():
-    if count > 1:
-        denominator *= factorial(count)
-result = numerator // denominator
-
-print(f"Количество различных слов из 5 букв: {result}")
+k = 6
+result = count_permutations(word, k)
+print(f"Количество различных слов: {result}")  # Вывод: 3864
