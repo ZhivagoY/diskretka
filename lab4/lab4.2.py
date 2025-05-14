@@ -150,8 +150,8 @@ def main():
     print(f"\nЗакодированный текст Хаффмана (первые 200 бит):\n{encoded_huffman[:200]}...")
     print(f"Общее количество бит (Хаффман): {len(encoded_huffman)}")
 
-    # 8. Сравнение с равномерными кодами (5 бит на символ)
-    uniform_code_length = len(limited_text) * 5
+    # 8. Сравнение с равномерными кодами (6 бит на символ)
+    uniform_code_length = len(limited_text) * 6
     print(f"Общее количество бит (равномерные коды): {uniform_code_length}")
 
     # 9. Расчет энтропии Шеннона
